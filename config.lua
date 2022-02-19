@@ -524,3 +524,71 @@ Zones =
         LimitSpeed = 20.0
     },
 }
+
+Config.itemDrink = {
+    [1] = {
+        name = "kurkakola",
+        price = 4,
+        amount = 50,
+        info = {},
+        type = "item",
+        slot = 1,
+    },
+    [2] = {
+        name = "water_bottle",
+        price = 4,
+        amount = 50,
+        info = {},
+        type = "item",
+        slot = 2,
+    },
+}
+
+Config.itemSnack = {
+    [1] = {
+        name = "tosti",
+        price = 4,
+        amount = 50,
+        info = {},
+        type = "item",
+        slot = 1,
+    }, -- add the rest of your food here
+}
+
+Config.itemCoffee = {
+    [1] = {
+        name = "coffee",
+        price = 7,
+        amount = 50,
+        info = {},
+        type = "item",
+        slot = 1,
+    },
+}
+
+Config.itemConstruction = {
+    [1] = {
+        name = "hd_mixtool",
+        price = 3000,
+        amount = 50,
+        info = {},
+        type = 'item',
+        slot = 1,
+    },
+    [2] = {
+        name = "hd_bt",
+        price = 2000,
+        amount = 50,
+        info = {},
+        type = 'item',
+        slot = 2,
+    },
+    [3] = {
+        name = 'hd_blowgas',
+        price = 50,
+        amount = 50,
+        info = {},
+        type = 'item',
+        slot = 3,
+    }
+}

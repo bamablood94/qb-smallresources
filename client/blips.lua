@@ -1,5 +1,6 @@
---[[local blips = {
-    --{name="Art Gallery", id=362, x = 15.159727, y = 144.60311, z = 93.791381, color = 27},
+local blips = {
+    {name = 'Construction Job', id = 648, x=-509.28,y=-1001.28,z=23.55, color = 5},
+    --[[{name="Art Gallery", id=362, x = 15.159727, y = 144.60311, z = 93.791381, color = 27},
     {name="Auction House", id=76, x = -1098.75, y = -1270.72, z = 5.84, color = 29},
 
     {name="Legal Crafting", id=566, x = 754.37, y = -3195.17, z = 6.07, color = 5},
@@ -42,7 +43,7 @@
     {name="LS Trucking Companies Hub", id=477, x = 1208.76, y = -3114.77, z = 5.56, color = 47},
 
     {name="Farming Supplies", id=478, x = 2529.51, y = 4984.7, z = 44.79, color = 2},
-    {name="Farming Packaging", id=514, x = 421.53, y = 6474.05, z = 28.81, color = 2},
+    {name="Farming Packaging", id=514, x = 421.53, y = 6474.05, z = 28.81, color = 2},]]
 }
 
 
@@ -80,4 +81,4 @@ RegisterCommand('toggleblips',function()
         RemoveBlip(item.blip)
     end
   end
-end)]]
+end)
