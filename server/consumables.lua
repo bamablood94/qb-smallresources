@@ -195,6 +195,13 @@ QBCore.Functions.CreateUseableItem("advancedlockpick", function(source, item)
     TriggerClientEvent("lockpicks:UseLockpick", source, true)
 end)
 
+----------- / Nightvision
+QBCore.Functions.CreateUseableItem("nightvision", function(source, item)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    TriggerClientEvent("consumables:client:useNightVision", src, item.name)
+end)
+
 ----------- / Unused
 
 -- QBCore.Functions.CreateUseableItem("smoketrailred", function(source, item)
@@ -203,3 +210,4 @@ end)
 --         TriggerClientEvent("consumables:client:UseRedSmoke", source)
 --     end
 -- end)
+

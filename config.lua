@@ -53,6 +53,22 @@ ConsumeablesEat = {
     ["chicken_ramen"] = math.random(50, 69),
     ["vegan_ramen"] = math.random(40, 50),
 
+    --SIMPLE FARMING
+    ["apple"] = math.random(10, 20),
+    ["beef"] = math.random(35, 50),
+    ["slicedpie"] = math.random(10, 20),
+    ["corncob"] = math.random(25, 40),
+    ["canofcorn"] = math.random(35, 50),
+    ["grapes"] = math.random(10, 20),
+    ["greenpepper"] = math.random(10, 20),
+    ["chillypepper"] = math.random(10, 20),
+    ["tomato"] = math.random(10, 20),
+    ["tomatopaste"] = math.random(25, 40),
+    ["cooked_bacon"] = math.random(35, 50),
+    ["cooked_sausage"] = math.random(35, 50),
+    ["cooked_pork"] = math.random(35, 50),
+    ["cooked_ham"] = math.random(35, 50),
+
 
 }
 
@@ -63,6 +79,11 @@ ConsumeablesDrink = {
     ["burger-softdrink"] = math.random(40, 50),
     ["burger-mshake"] = math.random(40, 50),
     ["cranberry"] = math.random(20, 40),
+
+    --SIMPLE FARMING
+    ["apple_juice"] = math.random(25, 45),
+    ["grapejuice"] = math.random(25, 45),
+    ["hotsauce"] = math.random(10, 15),
 }
 
 ConsumeablesAlcohol = {
@@ -359,12 +380,16 @@ ConfigSling = {
         -- --RIFLES--
         ["weapon_akm"] = { model = "w_ar_akm", hash = GetHashKey("weapon_akm")},
         ["weapon_rpk16"] = { model = "markomods-rpk16", hash = GetHashKey("weapon_rpk16")},
-        ["weapon_mk18"] = { model = "mk18", hash = GetHashKey("weapon_mk18")},
+        --["weapon_mk18"] = { model = "mk18", hash = GetHashKey("weapon_mk18")},
         ["weapon_fbiarb"] = { model = "w_ar_fbiarb", hash = GetHashKey("weapon_fbiarb")},
         ["weapon_hk416b"] = { model = "w_ar_HK416B", hash = GetHashKey("weapon_hk416b")},
         ["weapon_mcxa"] = { model = "w_ar_mcxa", hash = GetHashKey("weapon_mcxa")},
         ["weapon_specialcarbine"] = { model = "w_ar_specialcarbine", hash = GetHashKey('weapon_specialcarbine')},
         ["weapon_marksmanrifle"] = {model = "w_sr_marksmanrifle", hash = GetHashKey('weapon_marksmanrifle')},
+
+        --MK18
+        --["weapon_mk18"] = {model = "mk18", hash = GetHashKey('weapon_mk18')},
+        ['weapon_mk18'] = {model = 'mk18_frame1', GetHashKey('mk18_frame1')},
 
         ["weapon_m700"] = { model = "w_sr_M700", hash = GetHashKey("weapon_m700")},
         ["weapon_huntingrifle"] = { model = "w_sr_HUNTINGRIFLE", hash = GetHashKey("weapon_huntingrifle")},

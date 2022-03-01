@@ -515,3 +515,24 @@ CreateThread(function()
         end
     end
 end)
+
+--Night Vision
+function EquipNightVision()
+    loadAnimDict("anim@mp_helmets@on_foot")        
+    TaskPlayAnim(PlayerPedId(), "anim@mp_helmets@on_foot", "try_shirt_positive_d", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
+    SetTimeout(400, function()
+        ClearPedTasks(PlayerPedId())
+    end)
+end
+
+RegisterNetEvent('consumables:client:useNightVision', function()
+    EquipThermalVision()
+    if IsNightvisionActive() then
+        SetNightvision(false)
+        SetSeethrough(false)
+    else
+        SetNightvision(true)
+        SetSeethrough(false)
+    end
+end)
+
