@@ -31,3 +31,11 @@ RegisterNetEvent('construction:buy', function()
     constructionItems.slots = #Config.itemConstruction
     TriggerServerEvent("inventory:server:OpenInventory", "shop", "Constructionshop_", constructionItems)
 end)
+
+RegisterNetEvent('hunting:buy', function()
+    local HuntingItems = {}
+    HuntingItems.label = "Hunting Shop"
+    HuntingItems.items = Config.itemHunting
+    HuntingItems.slots = #Config.itemHunting
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", "Huntingshop_", HuntingItems)
+end)

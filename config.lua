@@ -9,6 +9,7 @@ Config.JointEffectTime = 60
 Config.RemoveWeaponDrops = true
 Config.RemoveWeaponDropsTimer = 25
 Config.DefaultPrice = 20 -- carwash
+Config.RagdollChance = 0.2 -- Decimal Value (Currently 20%)
 
 
 ConsumeablesEat = {
@@ -347,6 +348,30 @@ Config.Teleports = {
             drawText = '[E] Take Elevator Down'
         },
     },
+    [13] = {    -- TUNER CAR MEET ENTRANCE/EXIT
+        [1] = {
+            coords = vector4(774.52, -1867.38, 29.29, 265.35),
+            ['AllowVehicle'] = true,
+            drawText = '[E] Enter Car Meet'
+        },
+        [2] = {
+            coords = vector4(-2208.67, 1146.0, -23.26, 229.12),
+            ['AllowVehicle'] = true,
+            drawText = '[E] Leave Car Meet'
+        }
+    },
+    [14] = {    -- TUNER CAR MEET GATED ROOM
+        [1] = {
+            coords = vector4(-2142.24, 1160.58, -24.37, 188.09),
+            ['AllowVehicle'] = false,
+            drawText = '[E] Enter Gated Room',
+        },
+        [2] = {
+            coords = vector4(-1984.27, 1245.89, -24.36, 279.68),
+            ['AllowVehicle'] = false,
+            drawText = '[E] Leave Gated Room'
+        }
+    }
 }
 
 ConfigSling = {
@@ -621,3 +646,31 @@ Config.itemConstruction = {
         slot = 3,
     }
 }
+
+Config.itemHunting = {
+    [1] = {
+        name = 'weapon_knife',
+        price = 10,
+        amount = 50,
+        info = {},
+        type = 'item',
+        slot = 1,
+    },
+    [2] = {
+        name = 'weapon_marksmanrifle',
+        price = 1000,
+        amount = 5,
+        info = {},
+        type = 'item',
+        slot = 2,
+    },
+    [3] = {
+        name = 'huntingbait',
+        price = 15,
+        amount = 100,
+        info = {},
+        type = 'item',
+        slot = 3,
+    }
+}
+
