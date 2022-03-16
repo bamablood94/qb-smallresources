@@ -1,16 +1,16 @@
-local NodusCore = exports['nodus-core']:GetCoreObject()
+local QBCore = exports['qb-core']:GetCoreObject()
 
 local HaveBagOnHead = false
 
-RegisterNetEvent('nodus-headbag:putOn') 
-AddEventHandler('nodus-headbag:putOn', function()
+RegisterNetEvent('qb-headbag:putOn') 
+AddEventHandler('qb-headbag:putOn', function()
     local closestplayer = GetClosestPlayer(3)
     local target = GetPlayerServerId(closestplayer)
     local targetPed = GetPlayerPed(GetPlayerFromServerId(target))
     if target ~= 0 then
-        TriggerServerEvent("nodus-handbag:MaskPlayer", target)
+        TriggerServerEvent("qb-handbag:MaskPlayer", target)
     else
-        NodusCore.Functions.Notify("There's no one nearby!", "error")
+        QBCore.Functions.Notify("There's no one nearby!", "error")
     end
 end)
 
@@ -26,7 +26,7 @@ Citizen.CreateThread(function()
     end
 end)
 
-RegisterNetEvent('nodus-handbag:GetMasked', function(playerId)
+RegisterNetEvent('qb-handbag:GetMasked', function(playerId)
 	if not HaveBagOnHead then
         LocalPlayer.state:set("inv_busy", true, true)
 		Worek = CreateObject(GetHashKey("prop_money_bag_01"), 0, 0, 0, true, true, true) -- Create head bag object!
@@ -41,7 +41,7 @@ RegisterNetEvent('nodus-handbag:GetMasked', function(playerId)
         SetEntityAsNoLongerNeeded(Worek)
         SendNUIMessage({type = 'closeAll'})
         HaveBagOnHead = false
-        NodusCore.Functions.Notify("You can see now !!", "success")
+        QBCore.Functions.Notify("You can see now !!", "success")
     end
 end)
 

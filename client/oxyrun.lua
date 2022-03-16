@@ -1,4 +1,4 @@
-NodusCore = exports['nodus-core']:GetCoreObject()
+QBCore = exports['qb-core']:GetCoreObject()
 
 local tasking = false
 local drugStorePed = 0
@@ -77,7 +77,7 @@ function CreateOxyVehicle()
     end
 
     oxyVehicle = CreateVehicle(car, carspawns[spawnpoint]['coords']["x"], carspawns[spawnpoint]['coords']["y"], carspawns[spawnpoint]['coords']["z"], carspawns[spawnpoint]['coords']["w"], true, false)
-    local plt = NodusCore.Functions.GetPlate(oxyVehicle)
+    local plt = QBCore.Functions.GetPlate(oxyVehicle)
     SetVehicleHasBeenOwnedByPlayer(oxyVehicle,true)
 	TriggerEvent('vehiclekeys:client:SetOwner', plt)
     while true do
@@ -222,13 +222,13 @@ function DoDropOff()
 			end
 
 			Wait(2000)
-			NodusCore.Functions.Notify('The delivery was on point, your GPS will be updated with the next drop off', 'success')
+			QBCore.Functions.Notify('The delivery was on point, your GPS will be updated with the next drop off', 'success')
 			local chance = math.random(1,100)
 			if chance > 70 then
-				TriggerServerEvent('nodus-oxycall', exports['cd_dispatch']:GetPlayerInfo())
+				TriggerServerEvent('qb-oxycall', exports['cd_dispatch']:GetPlayerInfo())
 			end
 		else
-			NodusCore.Functions.Notify('The drop-off failed', 'error')
+			QBCore.Functions.Notify('The drop-off failed', 'error')
 		end
 
 		DeleteCreatedPed()
@@ -278,7 +278,7 @@ AddEventHandler("oxydelivery:client", function()
 			pedCreated = true
 			DeleteCreatedPed()
 			CreateOxyPed()
-			NodusCore.Functions.Notify('You are close to the drop-off point')
+			QBCore.Functions.Notify('You are close to the drop-off point')
 		end
 		toolong = toolong - 1
 		if toolong < 0 then
@@ -287,7 +287,7 @@ AddEventHandler("oxydelivery:client", function()
 			SetEntityAsNoLongerNeeded(oxyVehicle)
 			tasking = false
 			OxyRun = false
-			NodusCore.Functions.Notify('You took too long', 'error')
+			QBCore.Functions.Notify('You took too long', 'error')
 		end
 		if dstcheck < 2.0 and pedCreated then
 
@@ -335,7 +335,7 @@ CreateThread(function()
 			if not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 200.0 or GetVehicleBodyHealth(oxyVehicle) < 200.0 then
 				OxyRun = false
 				tasking = false
-				NodusCore.Functions.Notify("The dealer isn't giving you anymore locations due to the state of his car", "error")
+				QBCore.Functions.Notify("The dealer isn't giving you anymore locations due to the state of his car", "error")
 			else
 				if tasking then
 					Wait(30000)
@@ -361,5 +361,5 @@ AddEventHandler("oxydelivery:startDealing", function()
 	CreateOxyVehicle()
 	OxyRun = true
 	firstdeal = true
-	NodusCore.Functions.Notify('A car has been provided. Your GPS will be updated with locations soon', 'success')
+	QBCore.Functions.Notify('A car has been provided. Your GPS will be updated with locations soon', 'success')
 end)
