@@ -674,3 +674,17 @@ Config.itemHunting = {
     }
 }
 
+--/////////////////////////////////
+--OXYRUN
+--/////////////////////////////////
+
+Config.StartOxyPayment = 100 -- How much you pay at the start to start the run
+Config.RunAmount = math.random(7,15) -- How many drop offs the player does before it automatixally stops.
+Config.Payment = math.random(530, 710) -- How much you get paid when RN Jesus doesnt give you oxy, divided by 2 for when it does.
+Config.Item = "oxy" -- The item you receive from the oxy run. Should be oxy right??
+Config.OxyChance = 300 -- Percentage chance of getting oxy on the run. Multiplied by 100. 10% = 100, 20% = 200, 50% = 500, etc. Default 55%.
+Config.OxyAmount = 2 -- How much oxy you get when RN Jesus gives you oxy. Default: 4.
+Config.BigRewarditemChance = 10 -- Percentage of getting rare item on oxy run. Multiplied by 100. 0.1% = 1, 1% = 10, 20% = 200, 50% = 500, etc. Default 50%.
+Config.BigRewarditem = "usb_red" -- Put a rare item here which will have 50% chance of being given on the run.
+Config.OxyCars = "CHECK THE CODE" -- Cars
+Config.DropOffs = "CHECK THE CODE" -- Drop off spots
