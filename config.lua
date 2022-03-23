@@ -371,6 +371,18 @@ Config.Teleports = {
             ['AllowVehicle'] = false,
             drawText = '[E] Leave Gated Room'
         }
+    },
+    [15] = {
+        [1] = {
+            coords = vector4(259.35, -1357.19, 30.55, 318.49),
+            ['AllowVehicle'] = false,
+            drawText = '[E] Go to Plastic Surgery Room'
+        },
+        [2] = {
+            coords = vector4(251.57, -1366.51, 39.53, 136.46),
+            ['AllowVehicle'] = false,
+            drawText = '[E] Leave Surgery Room',
+        },
     }
 }
 
