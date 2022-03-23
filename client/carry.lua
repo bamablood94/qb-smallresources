@@ -64,10 +64,10 @@ RegisterCommand("carry",function(source, args)
 				ensureAnimDict(carry.personCarrying.animDict)
 				carry.type = "carrying"
 			else
-				qbCore.Functions.Notify("Nobody to carry!", "error")
+				QBCore.Functions.Notify("Nobody to carry!", "error")
 			end
 		else
-			qbCore.Functions.Notify("Nobody to carry!", "error")
+			QBCore.Functions.Notify("Nobody to carry!", "error")
 		end
 	else
 		carry.InProgress = false
