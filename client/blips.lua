@@ -2,6 +2,7 @@ local blips = {
     {name = 'Construction Job', id = 648, x=-509.28,y=-1001.28,z=23.55, color = 5},
     {name = 'Hunting Shop', id = 458, x = 2030.92, y = 4980.13, z = 42.1, color = 0},
     {name = 'Hunting Zone', id = 141, x = -959.2, y = 4698.16, z = 268.16, color = 0},
+    {name = 'Truck Logistics', id = 477, x = 1204.78, y = -3111.28, z = 5.55, color = 0}
     --[[{name="Art Gallery", id=362, x = 15.159727, y = 144.60311, z = 93.791381, color = 27},
     {name="Auction House", id=76, x = -1098.75, y = -1270.72, z = 5.84, color = 29},
 

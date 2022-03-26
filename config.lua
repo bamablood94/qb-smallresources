@@ -9,7 +9,7 @@ Config.JointEffectTime = 60
 Config.RemoveWeaponDrops = true
 Config.RemoveWeaponDropsTimer = 25
 Config.DefaultPrice = 20 -- carwash
-Config.RagdollChance = 0.2 -- Decimal Value (Currently 20%)
+Config.RagdollChance = 0.3 -- Decimal Value (Currently 20%)
 
 
 ConsumeablesEat = {
@@ -372,7 +372,7 @@ Config.Teleports = {
             drawText = '[E] Leave Gated Room'
         }
     },
-    [15] = {
+    [15] = {    -- Plastic Surgery
         [1] = {
             coords = vector4(259.35, -1357.19, 30.55, 318.49),
             ['AllowVehicle'] = false,
@@ -382,6 +382,18 @@ Config.Teleports = {
             coords = vector4(251.57, -1366.51, 39.53, 136.46),
             ['AllowVehicle'] = false,
             drawText = '[E] Leave Surgery Room',
+        },
+    },
+    [16] = {    -- Main Floor to Parking Garage EMS Pillbox
+        [1] = {
+            coords = vector3(330.39, -601.24, 43.28),
+            ['AllowVehicle'] = false,
+            drawText = '[E] Elevator to Garage',
+        },
+        [2] = {
+            coords = vector3(340.22, -584.62, 28.8),
+            ['AllowVehicle'] = false,
+            drawText = '[E] Elevator to Main Floor'
         },
     }
 }
@@ -684,6 +696,16 @@ Config.itemHunting = {
         type = 'item',
         slot = 3,
     }
+}
+Config.itemMaterials = {
+    [1] = {
+        name = 'hydrofloricacid',
+        price = 1000,
+        amount = 100,
+        info = {},
+        type = 'item',
+        slot = 1,
+    },
 }
 
 --/////////////////////////////////

@@ -112,9 +112,9 @@ function sit(object, modelName, data)
 	local playerPos = GetEntityCoords(PlayerPedId())
 	local objectCoords = pos.x .. pos.y .. pos.z
 
-	qbCore.Functions.TriggerCallback('qb-sit:getPlace', function(occupied)
+	QBCore.Functions.TriggerCallback('qb-sit:getPlace', function(occupied)
 		if occupied then
-			qbCore.Functions.Notify('There is someone on this chair', 'error')
+			QBCore.Functions.Notify('There is someone on this chair', 'error')
 		else
 			local playerPed = PlayerPedId()
 			lastPos, currentSitCoords = GetEntityCoords(playerPed), objectCoords
