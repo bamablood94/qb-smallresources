@@ -1,19 +1,4 @@
-CreateThread(function()
-    while true do 
-        if QBCore ~= nil then
-            local ped = PlayerPedId()
-            if not IsPedInAnyVehicle(ped, false) and GetEntitySpeed(ped) > 2.5 then
-                if IsControlJustPressed(1, 19) then
-                    Tackle()
-                end
-            else
-                Wait(250)
-            end
-        end
 
-        Wait(1)
-    end
-end)
 
 RegisterNetEvent('tackle:client:GetTackled', function()
 	SetPedToRagdoll(PlayerPedId(), math.random(1000, 6000), math.random(1000, 6000), 0, 0, 0, 0) 
