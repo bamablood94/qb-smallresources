@@ -10,13 +10,14 @@ Config.RemoveWeaponDrops = true
 Config.RemoveWeaponDropsTimer = 25
 Config.DefaultPrice = 20 -- carwash
 Config.RagdollChance = 0.3 -- Decimal Value (Currently 20%)
+Config.DirtLevel = 50
 
 
 ConsumeablesEat = {
     ["sandwich"] = math.random(20, 29),
     ["tosti"] = math.random(15, 25),
-    ["food_twerks_candy"] = math.random(15, 24),
-    ["food_snikkel_candy"] = math.random(10, 30),
+    ["twerks_candy"] = math.random(15, 24),
+    ["snikkel_candy"] = math.random(10, 30),
 
     ["burger-bleeder"] = math.random(45, 64),
     ["burger-moneyshot"] = math.random(45, 64),
@@ -110,10 +111,6 @@ ConsumeablesAlcohol = {
     ["amaretto"] = math.random(20, 40),
     ["curaco"] = math.random(20, 40),
     ["beerglass"] = math.random(20, 40),
-
-    ["akashiw"] = math.random(50, 60),
-    ["akashiw"] = math.random(50, 60),
-    ["akashiw"] = math.random(50, 60),
     ["akashiw"] = math.random(50, 60),
     ["roostersspecial"] = math.random(70, 100),
 
@@ -439,12 +436,7 @@ ConfigSling = {
         ["weapon_mcxa"] = { model = "w_ar_mcxa", hash = GetHashKey("weapon_mcxa")},
         ["weapon_specialcarbine"] = { model = "w_ar_specialcarbine", hash = GetHashKey('weapon_specialcarbine')},
         ["weapon_marksmanrifle"] = {model = "w_sr_marksmanrifle", hash = GetHashKey('weapon_marksmanrifle')},
-
-        --MK18
-        --["weapon_mk18"] = {model = "mk18", hash = GetHashKey('weapon_mk18')},
-        ['weapon_mk18'] = {model = 'mk18_frame1', GetHashKey('mk18_frame1')},
-
-        ["weapon_m700"] = { model = "w_sr_M700", hash = GetHashKey("weapon_m700")},
+        ['weapon_beanbag'] = {model = 'w_sg_beanbag', hash = GetHashKey('weapon_beanbag')},
         ["weapon_huntingrifle"] = { model = "w_sr_HUNTINGRIFLE", hash = GetHashKey("weapon_huntingrifle")},
     }
 }
@@ -722,3 +714,284 @@ Config.BigRewarditemChance = 10 -- Percentage of getting rare item on oxy run. M
 Config.BigRewarditem = "usb_red" -- Put a rare item here which will have 50% chance of being given on the run.
 Config.OxyCars = "CHECK THE CODE" -- Cars
 Config.DropOffs = "CHECK THE CODE" -- Drop off spots
+
+--/////////////////////////////////
+--COMPANIONS
+--/////////////////////////////////
+
+Config.TrunkClasses = {
+    [0]  = { allowed = true, x = 0.0, y = -1.5, z = 0.0 }, --Coupes
+    [1]  = { allowed = true, x = 0.0, y = -2.0, z = 0.0 }, --Sedans
+    [2]  = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --SUVs
+    [3]  = { allowed = true, x = 0.0, y = -1.5, z = 0.0 }, --Coupes
+    [4]  = { allowed = true, x = 0.0, y = -2.0, z = 0.0 }, --Muscle
+    [5]  = { allowed = true, x = 0.0, y = -2.0, z = 0.0 }, --Sports Classics
+    [6]  = { allowed = true, x = 0.0, y = -2.0, z = 0.0 }, --Sports
+    [7]  = { allowed = true, x = 0.0, y = -2.0, z = 0.0 }, --Super
+    [8]  = { allowed = false, x = 0.0, y = -1.0, z = 0.25 }, --Motorcycles
+    [9]  = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Off-road
+    [10] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Industrial
+    [11] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Utility
+    [12] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Vans
+    [13] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Cycles
+    [14] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Boats
+    [15] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Helicopters
+    [16] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Planes
+    [17] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Service
+    [18] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Emergency
+    [19] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Military
+    [20] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Commercial
+    [21] = { allowed = true, x = 0.0, y = -1.0, z = 0.25 }, --Trains
+}
+
+Config.Animations = {
+    ["a_c_shepherd"] = {
+        ["lay"] = {
+            animationDict = "creatures@rottweiler@amb@sleep_in_kennel@",
+            task = "sleep_in_kennel",
+        },
+        ["trick"] = {
+            animationDict = "creatures@rottweiler@tricks@",
+            task = "paw_right_enter",
+            taskWait = "2000",
+            taskExit = "paw_right_exit",
+        },
+        ["sit"] = {
+            animationDict = "creatures@rottweiler@amb@world_dog_sitting@base",
+            task = "base",
+        },
+        ["intimidate"] = {
+            animationDict = "creatures@rottweiler@melee@streamed_taunts@",
+            task = "taunt_01",
+        }
+    },
+    ["a_c_cat_01"] = {
+        ["lay"] = {
+            animationDict = "creatures@cat@amb@world_cat_sleeping_ground@base",
+            task = "base",
+        },
+        ["trick"] = {
+            animationDict = "creatures@cat@amb@peyote@enter",
+            task = "enter",
+        },
+        ["sit"] = {
+            animationDict = "creatures@cat@player_action@",
+            task = "action_a",
+        },
+        ["intimidate"] = {
+            animationDict = "",
+            task = "",
+        }
+    },
+    ["a_c_pug"] = {
+        ["lay"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["trick"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["sit"] = {
+            animationDict = "creatures@pug@amb@world_dog_sitting@base",
+            task = "base",
+        },
+        ["intimidate"] = {
+            animationDict = "creatures@pug@amb@world_dog_barking@base",
+            task = "base",
+        }
+    },
+    ["a_c_retriever"] = {
+        ["lay"] = {
+            animationDict = "creatures@retriever@amb@world_dog_sitting@idle_a",
+            task = "idle_c",
+        },
+        ["trick"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["sit"] = {
+            animationDict = "creatures@retriever@amb@world_dog_sitting@idle_a",
+            task = "idle_a",
+        },
+        ["intimidate"] = {
+            animationDict = "creatures@retriever@amb@world_dog_barking@base",
+            task = "base",
+        }
+    },
+    ["a_c_rat"] = {
+        ["lay"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["trick"] = {
+            animationDict = "creatures@rat@amb@world_rats_eating@idle_a",
+            task = "idle_a",
+        },
+        ["sit"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["intimidate"] = {
+            animationDict = "",
+            task = "",
+        }
+    },
+    ["a_c_mtlion"] = {
+        ["lay"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["trick"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["sit"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["intimidate"] = {
+            animationDict = "",
+            task = "",
+        }
+    },
+    ["a_c_rottweiler"] = {
+        ["lay"] = {
+            animationDict = "creatures@rottweiler@amb@sleep_in_kennel@",
+            task = "sleep_in_kennel",
+        },
+        ["trick"] = {
+            animationDict = "creatures@rottweiler@tricks@",
+            task = "beg_enter",
+            taskWait = "600",
+            taskExit = "beg_exit",
+        },
+        ["sit"] = {
+            animationDict = "creatures@rottweiler@amb@world_dog_sitting@base",
+            task = "base",
+        },
+        ["intimidate"] = {
+            animationDict = "creatures@rottweiler@melee@streamed_taunts@",
+            task = "taunt_01",
+        }
+    },
+    ["a_c_westy"] = {
+        ["lay"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["trick"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["sit"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["intimidate"] = {
+            animationDict = "",
+            task = "",
+        }
+    },
+    ["a_c_poodle"] = {
+        ["lay"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["trick"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["sit"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["intimidate"] = {
+            animationDict = "",
+            task = "",
+        }
+    },
+    ["a_c_rabbit_01"] = {
+        ["lay"] = {
+            animationDict = "creatures@rabbit@player_action@",
+            task = "action_a",
+        },
+        ["trick"] = {
+            animationDict = "creatures@rabbit@amb@world_rabbit_eating@idle_a",
+            task = "idle_c",
+        },
+        ["sit"] = {
+            animationDict = "creatures@rabbit@amb@world_rabbit_eating@idle_a",
+            task = "idle_b",
+        },
+        ["intimidate"] = {
+            animationDict = "creatures@rabbit@amb@world_rabbit_eating@idle_a",
+            task = "idle_a",
+        }
+    },
+    ["a_c_hen"] = {
+        ["lay"] = {
+            animationDict = "creatures@hen@amb@world_hen_standing@idle_a",
+            task = "idle_a",
+        },
+        ["trick"] = {
+            animationDict = "creatures@hen@amb@world_hen_pecking@base",
+            task = "base",
+        },
+        ["sit"] = {
+            animationDict = "creatures@hen@amb@world_hen_pecking@idle_a",
+            task = "idle_c",
+        },
+        ["intimidate"] = {
+            animationDict = "creatures@hen@player_action@",
+            task = "action_a",
+        }
+    },
+    ["a_c_husky"] = {
+        ["lay"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["trick"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["sit"] = {
+            animationDict = "",
+            task = "",
+        },
+        ["intimidate"] = {
+            animationDict = "",
+            task = "",
+        }
+    },
+}
+
+--/////////////////////////////////
+--ROBPARKING
+--/////////////////////////////////
+
+Config.MoneyMin = 100
+Config.MoneyMax = 550
+
+--/////////////////////////////////
+--ROLLERBLADING
+--/////////////////////////////////
+
+Config.SkateMaxSpeedKmh = 190
+Config.SkateMaxJumpHeight = 8.0
+Config.SkateLoseConnectionDistance = 100.0
+
+--/////////////////////////////////
+--ROLLERBLADING
+--/////////////////////////////////
+RollerConfig = {
+    MaxSpeedKmh = 20,
+	MaxSpeedSprintKmh = 25,
+    maxJumpHeigh = 5.0,
+    LoseConnectionDistance = 50.0,
+	RollerSlotHomme = 7,
+	RollerSlotFemme = 3,
+	RollerColorHomme = 2,
+	RollerColorFemme = 2,
+}

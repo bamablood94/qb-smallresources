@@ -30,7 +30,8 @@ RegisterNetEvent('qb-carwash:client:washCar', function()
         WashDecalsFromVehicle(PedVehicle, 1.0)
         washingVehicle = false
     end, function() -- Cancel
-        QBCore.Functions.Notify("Washing canceled ..", "error")
+        --QBCore.Functions.Notify("Washing canceled ..", "error")
+        exports['okokNotify']:Alert('Washing Cancelled', 'Car Wash was cancelled.', 1500, 'error')
         washingVehicle = false
     end)
 end)
@@ -56,7 +57,8 @@ CreateThread(function()
                                     if dirtLevel > Config.DirtLevel then
                                         TriggerServerEvent('qb-carwash:server:washCar')
                                     else
-                                        QBCore.Functions.Notify("The vehicle isn't dirty", 'error')
+                                        --QBCore.Functions.Notify("The vehicle isn't dirty", 'error')
+                                        exports['okokNotify']:Alert('Not Dirty', 'Why wash a clean vehicle? You dumb?', 1500, 'warning')
                                     end
                                 end
                             else

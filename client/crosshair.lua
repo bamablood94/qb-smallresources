@@ -99,7 +99,8 @@ local function SaveDatas()
 		SetResourceKvpInt("qb-crosshair_" .. v.param, crosshairParameters[v.param]["currentValue"])
 	end
 
-	qbCore.Functions.Notify("Crosshair has been updated", 'success')
+	--qbCore.Functions.Notify("Crosshair has been updated", 'success')
+	exports['okokNotify']:Alert('Update', 'Crosshair has been updated!', 1500, 'success')
 end
 
 local function ResetDatas()
@@ -118,7 +119,8 @@ local function ResetDatas()
 		SetResourceKvpInt("qb-crosshair_" .. v.param, v.value)
 	end
 
-	qbCore.Functions.Notify("Crosshair has been reset", 'error')
+	--qbCore.Functions.Notify("Crosshair has been reset", 'error')
+	exports['okokNotify']:Alert('Reset', 'Crosshair has been reset', 1500, 'error')
 
 	GetInitialDatas()
 end

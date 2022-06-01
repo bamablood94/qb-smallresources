@@ -133,7 +133,8 @@ QBCore.Commands.Add("resetarmor", "Resets Vest (Police Only)", {}, false, functi
     if Player.PlayerData.job.name == "police" then
         TriggerClientEvent("consumables:client:ResetArmor", src)
     else
-        TriggerClientEvent('QBCore:Notify', src,  "For Police Officer Only", "error")
+        --TriggerClientEvent('QBCore:Notify', src,  "For Police Officer Only", "error")
+        TriggerClientEvent('okokNotify:Alert', src, 'Police Only', 'For Police Officer Only!', 1500, 'error')
     end
 end)
 
@@ -202,7 +203,7 @@ QBCore.Functions.CreateUseableItem("nightvision", function(source, item)
     TriggerClientEvent("consumables:client:useNightVision", src, item.name)
 end)
 
-QBCore.Functions.CreateUseableItem("taserammo", function(source, item)
+QBCore.Functions.CreateUseableItem("taser_ammo", function(source, item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(source)
     if Player.Functions.RemoveItem(item.name, 1, item.slot) then

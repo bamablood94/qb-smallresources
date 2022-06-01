@@ -64,10 +64,12 @@ RegisterCommand("carry",function(source, args)
 				ensureAnimDict(carry.personCarrying.animDict)
 				carry.type = "carrying"
 			else
-				QBCore.Functions.Notify("Nobody to carry!", "error")
+				--QBCore.Functions.Notify("Nobody to carry!", "error")
+				exports['okokNotify']:Alert('No One Nearby', 'No one Nearby to carry.', 1500, 'warning')
 			end
 		else
-			QBCore.Functions.Notify("Nobody to carry!", "error")
+			--QBCore.Functions.Notify("Nobody to carry!", "error")
+			exports['okokNotify']:Alert('No One Nearby', 'No one Nearby to carry.', 1500, 'warning')
 		end
 	else
 		carry.InProgress = false

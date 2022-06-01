@@ -13,8 +13,8 @@ AddEventHandler("FillTazer",function(source, args, rawCommand)
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
         taserCartsLeft = maxTaserCarts
-        TriggerServerEvent("QBCore:Server:RemoveItem", "taserammo", 1)
-        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["taserammo"], "remove")
+        TriggerServerEvent("QBCore:Server:RemoveItem", "taser_ammo", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["taser_ammo"], "remove")
     end)
 end)
 

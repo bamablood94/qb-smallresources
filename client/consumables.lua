@@ -246,7 +246,8 @@ RegisterNetEvent('consumables:client:DrinkAlcohol', function(itemName)
 
     end, function() -- Cancel
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        QBCore.Functions.Notify("Cancelled..", "error")
+        --QBCore.Functions.Notify("Cancelled..", "error")
+        exports['okokNotify']:Alert('Cancelled', 'You cancelled this action', 1500, 'error')
     end)
 end)
 
@@ -269,7 +270,8 @@ RegisterNetEvent('consumables:client:Cokebaggy', function()
         CokeBaggyEffect()
     end, function() -- Cancel
         StopAnimTask(ped, "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
-        QBCore.Functions.Notify("Canceled..", "error")
+        --QBCore.Functions.Notify("Canceled..", "error")
+        exports['okokNotify']:Alert('Cancelled', 'You cancelled this action', 1500, 'error')
     end)
 end)
 
@@ -292,7 +294,8 @@ RegisterNetEvent('consumables:client:Crackbaggy', function()
         CrackBaggyEffect()
     end, function() -- Cancel
         StopAnimTask(ped, "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
-        QBCore.Functions.Notify("Canceled..", "error")
+        --QBCore.Functions.Notify("Canceled..", "error")
+        exports['okokNotify']:Alert('Cancelled', 'You cancelled this action', 1500, 'error')
     end)
 end)
 
@@ -313,7 +316,8 @@ RegisterNetEvent('consumables:client:EcstasyBaggy', function()
         EcstasyEffect()
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), "mp_suicide", "pill", 1.0)
-        QBCore.Functions.Notify("Failed", "error")
+        --QBCore.Functions.Notify("Failed", "error")
+        exports['okokNotify']:Alert('Failed!', 'This Failed...Why?', 1500, 'error')
     end)
 end)
 
@@ -335,7 +339,8 @@ RegisterNetEvent('consumables:client:oxy', function()
 		HealOxy()
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), "mp_suicide", "pill", 1.0)
-        QBCore.Functions.Notify("Canceled", "error")
+        --QBCore.Functions.Notify("Canceled", "error")
+        exports['okokNotify']:Alert('Cancelled', 'You cancelled this action', 1500, 'error')
     end)
 end)
 
@@ -358,7 +363,8 @@ RegisterNetEvent('consumables:client:meth', function()
         MethBagEffect()
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
-        QBCore.Functions.Notify("Canceled..", "error")
+        --QBCore.Functions.Notify("Canceled..", "error")
+        exports['okokNotify']:Alert('Cancelled', 'You cancelled this action', 1500, 'error')
 	end)
 end)
 
@@ -424,12 +430,13 @@ RegisterNetEvent('consumables:client:ResetParachute', function()
             ParachuteEquiped = false
         end)
     else
-        QBCore.Functions.Notify("You dont have a parachute!", "error")
+        --QBCore.Functions.Notify("You dont have a parachute!", "error")
+        exports['okokNotify']:Alert('Missing Item', 'You don\'t have a parachute!', 1500, 'error')
     end
 end)
 
 RegisterNetEvent('consumables:client:UseArmor', function()
-    if GetPedArmour(PlayerPedId()) >= 75 then QBCore.Functions.Notify('You already have enough armor on!', 'error') return end
+    if GetPedArmour(PlayerPedId()) >= 75 then --[[QBCore.Functions.Notify('You already have enough armor on!', 'error')]]exports['okokNotify']:Alert('Armor', 'You already have enough armor on!', 1500, 'error') return end
     QBCore.Functions.Progressbar("use_armor", "Putting on the body armour..", 5000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
@@ -444,7 +451,7 @@ RegisterNetEvent('consumables:client:UseArmor', function()
 end)
 
 RegisterNetEvent('consumables:client:UseHeavyArmor', function()
-    if GetPedArmour(PlayerPedId()) == 100 then QBCore.Functions.Notify('You already have enough armor on!', 'error') return end
+    if GetPedArmour(PlayerPedId()) == 100 then --[[QBCore.Functions.Notify('You already have enough armor on!', 'error')]]exports['okokNotify']:Alert('Armor', 'You already have enough armor on!', 1500, 'error') return end
     local ped = PlayerPedId()
     local PlayerData = QBCore.Functions.GetPlayerData()
     QBCore.Functions.Progressbar("use_heavyarmor", "Putting on body armour..", 5000, false, true, {
@@ -453,7 +460,7 @@ RegisterNetEvent('consumables:client:UseHeavyArmor', function()
 		disableMouse = false,
 		disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        if PlayerData.charinfo.gender == 0 then
+        --[[if PlayerData.charinfo.gender == 0 then
             currentVest = GetPedDrawableVariation(ped, 9)
             currentVestTexture = GetPedTextureVariation(ped, 9)
             if GetPedDrawableVariation(ped, 9) == 7 then
@@ -465,7 +472,7 @@ RegisterNetEvent('consumables:client:UseHeavyArmor', function()
             currentVest = GetPedDrawableVariation(ped, 30)
             currentVestTexture = GetPedTextureVariation(ped, 30)
             SetPedComponentVariation(ped, 9, 30, 0, 2)
-        end
+        end]]
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["heavyarmor"], "remove")
         TriggerServerEvent("QBCore:Server:RemoveItem", "heavyarmor", 1)
         SetPedArmour(ped, 100)
@@ -487,7 +494,8 @@ RegisterNetEvent('consumables:client:ResetArmor', function()
             TriggerServerEvent("QBCore:Server:AddItem", "heavyarmor", 1)
         end)
     else
-        QBCore.Functions.Notify("You\'re not wearing a vest..", "error")
+        --QBCore.Functions.Notify("You\'re not wearing a vest..", "error")
+        exports['okokNotify']:Alert('Missing Item', 'You\'re not wearing a vest..', 1500, 'error')
     end
 end)
 
@@ -517,7 +525,7 @@ CreateThread(function()
 end)
 
 --Night Vision
-function EquipNightVision()
+function EquipThermalVision()
     loadAnimDict("anim@mp_helmets@on_foot")        
     TaskPlayAnim(PlayerPedId(), "anim@mp_helmets@on_foot", "try_shirt_positive_d", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
     SetTimeout(400, function()

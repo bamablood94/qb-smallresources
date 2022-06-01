@@ -20,7 +20,8 @@ Citizen.CreateThread(function()
 
         if not notify then
             if IsPedInAnyVehicle(ped, true) then
-                QBCore.Functions.Notify('Hold F while exiting your vehicle to leave the engine running!')
+                --QBCore.Functions.Notify('Hold F while exiting your vehicle to leave the engine running!')
+                exports['okokNotify']:Alert('Info', 'Hold "F", while exiting your vehicle to leave the engine running!', 2500, 'info')
                 notify = true
             end
         end

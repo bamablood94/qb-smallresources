@@ -10,7 +10,8 @@ AddEventHandler('qb-headbag:putOn', function()
     if target ~= 0 then
         TriggerServerEvent("qb-handbag:MaskPlayer", target)
     else
-        QBCore.Functions.Notify("There's no one nearby!", "error")
+        --QBCore.Functions.Notify("There's no one nearby!", "error")
+        exports['okokNotify']:Alert('No One Nearby', 'There\'s no one nearby!', 1500, 'error')
     end
 end)
 
@@ -41,7 +42,8 @@ RegisterNetEvent('qb-handbag:GetMasked', function(playerId)
         SetEntityAsNoLongerNeeded(Worek)
         SendNUIMessage({type = 'closeAll'})
         HaveBagOnHead = false
-        QBCore.Functions.Notify("You can see now !!", "success")
+        --QBCore.Functions.Notify("You can see now !!", "success")
+        exports['okokNotify']:Alert('Removed Bag/Mask', 'You can see Now !!', 2000, 'success')
     end
 end)
 

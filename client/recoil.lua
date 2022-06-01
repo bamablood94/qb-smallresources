@@ -119,7 +119,10 @@ local recoils = {
 	-- Miscellaneous
 	-- [883325847] = 0.3,		--['weapon_petrolcan']
 	-- [101631238] = 0.3,		--['weapon_fireextinguisher']
-	-- [-1168940174] = 0.3,		--['weapon_hazardcan']
+	-- [-1168940174] = 0.3,		--['weapon_hazardcan'],
+
+	--HUNTING
+	[-1327835241] = 1.0, -- hunting rifle
 }
 
 CreateThread(function()

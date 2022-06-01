@@ -10,7 +10,8 @@ end)
 
 QBCore.Commands.Add("id", "Check Your ID #", {}, false, function(source, args)
     local src = source
-    TriggerClientEvent('QBCore:Notify', src,  "ID: "..src)
+    --TriggerClientEvent('QBCore:Notify', src,  "ID: "..src)
+    TriggerClientEvent('okokNotify:Alert', src, 'You\'re ID', 'ID: '..src, 2500, 'info')
 end)
 
 QBCore.Functions.CreateUseableItem("harness", function(source, item)
@@ -52,7 +53,8 @@ RegisterNetEvent('qb-carwash:server:washCar', function()
     elseif Player.Functions.RemoveMoney('bank', Config.DefaultPrice, "car-washed") then
         TriggerClientEvent('qb-carwash:client:washCar', src)
     else
-        TriggerClientEvent('QBCore:Notify', src, 'You dont have enough money..', 'error')
+        --TriggerClientEvent('QBCore:Notify', src, 'You dont have enough money..', 'error')
+        TriggerClientEvent('okokNotify:Alert', src, 'Not Enough Money', 'You don\'t have enough money..', 1500, 'warning')
     end
 end)
 

@@ -222,13 +222,15 @@ function DoDropOff()
 			end
 
 			Wait(2000)
-			QBCore.Functions.Notify('The delivery was on point, your GPS will be updated with the next drop off', 'success')
+			--QBCore.Functions.Notify('The delivery was on point, your GPS will be updated with the next drop off', 'success')
+			exports['okokNotify']:Alert('GPS', 'The delivery was on point. Your GPS will be updated with the next drop off', 3000, 'success')
 			local chance = math.random(1,100)
 			if chance > 70 then
 				TriggerServerEvent('qb-oxycall', exports['cd_dispatch']:GetPlayerInfo())
 			end
 		else
-			QBCore.Functions.Notify('The drop-off failed', 'error')
+			--QBCore.Functions.Notify('The drop-off failed', 'error')
+			exports['okokNotify']:Alert('Drop-Off Failed', 'The Drop-Off Failed. Try the next one.', 2500, 'warning')
 		end
 
 		DeleteCreatedPed()
@@ -278,7 +280,8 @@ AddEventHandler("oxydelivery:client", function()
 			pedCreated = true
 			DeleteCreatedPed()
 			CreateOxyPed()
-			QBCore.Functions.Notify('You are close to the drop-off point')
+			--QBCore.Functions.Notify('You are close to the drop-off point')
+			exports['okokNotify']:Alert('GPS', 'Getting closed to the drop-off point.', 1500, 'info')
 		end
 		toolong = toolong - 1
 		if toolong < 0 then
@@ -287,7 +290,8 @@ AddEventHandler("oxydelivery:client", function()
 			SetEntityAsNoLongerNeeded(oxyVehicle)
 			tasking = false
 			OxyRun = false
-			QBCore.Functions.Notify('You took too long', 'error')
+			--QBCore.Functions.Notify('You took too long', 'error')
+			exports['okokNotify']:Alert('Took too long', 'You took too long to get to the drop-off point.', 2500, 'warning')
 		end
 		if dstcheck < 2.0 and pedCreated then
 
@@ -335,7 +339,8 @@ CreateThread(function()
 			if not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 200.0 or GetVehicleBodyHealth(oxyVehicle) < 200.0 then
 				OxyRun = false
 				tasking = false
-				QBCore.Functions.Notify("The dealer isn't giving you anymore locations due to the state of his car", "error")
+				--QBCore.Functions.Notify("The dealer isn't giving you anymore locations due to the state of his car", "error")
+				exports['okokNotify']:Alert('WARNING!', 'The dealer isn\'t giving you anymore locations due to the state of his car.', 3000, 'warning')
 			else
 				if tasking then
 					Wait(30000)
@@ -361,5 +366,6 @@ AddEventHandler("oxydelivery:startDealing", function()
 	CreateOxyVehicle()
 	OxyRun = true
 	firstdeal = true
-	QBCore.Functions.Notify('A car has been provided. Your GPS will be updated with locations soon', 'success')
+	--QBCore.Functions.Notify('A car has been provided. Your GPS will be updated with locations soon', 'success')
+	exports['okokNotify']:Alert('GPS', 'A car has been provided. Your GPS will be updated with locations soon.', 2500, 'success')
 end)

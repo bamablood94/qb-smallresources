@@ -96,7 +96,8 @@ function callTakeHostage()
 	end
 
 	if not canTakeHostage then
-		qbCore.Functions.Notify("You need a pistol with ammo!", "error")
+		--QBCore.Functions.Notify("You need a pistol with ammo!", "error")
+		exports['okokNotify']:Alert('Need Ammo', 'You need a pistol with ammo!', 1500, 'error')
 	end
 
 	if not takeHostage.InProgress and canTakeHostage then
@@ -111,10 +112,12 @@ function callTakeHostage()
 				ensureAnimDict(takeHostage.agressor.animDict)
 				takeHostage.type = "agressor"
 			else
-				qbCore.Functions.Notify("Nobody to take hostage in area!", "error")
+				--QBCore.Functions.Notify("Nobody to take hostage in area!", "error")
+				exports['okokNotify']:Alert('No One Nearby', 'Nobody to take hostage in area!', 2000, 'error')
 			end
 		else
-			qbCore.Functions.Notify("Nobody to take hostage in area!", "error")
+			--QBCore.Functions.Notify("Nobody to take hostage in area!", "error")
+			exports['okokNotify']:Alert('No One Nearby', 'Nobody to take hostage in area!', 2000, 'error')
 		end
 	end
 end

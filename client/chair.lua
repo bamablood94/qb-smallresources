@@ -114,7 +114,8 @@ function sit(object, modelName, data)
 
 	QBCore.Functions.TriggerCallback('qb-sit:getPlace', function(occupied)
 		if occupied then
-			QBCore.Functions.Notify('There is someone on this chair', 'error')
+			--QBCore.Functions.Notify('There is someone on this chair', 'error')
+			exports['okokNotify']:Alert('Already Occupied', 'There is someone already in this chair.', 2000, 'warning')
 		else
 			local playerPed = PlayerPedId()
 			lastPos, currentSitCoords = GetEntityCoords(playerPed), objectCoords

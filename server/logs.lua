@@ -20,7 +20,9 @@ local Webhooks = {
     ['bankrobbery'] = '',
     ['powerplants'] = '',
     ['death'] = '',
-    ['joinleave'] = '',
+    ['join'] = 'https://discord.com/api/webhooks/972291018357604392/yaWmEnZQlAaKkvarx3Adw12FmlDzmQnKcUVo0f0Glq_911L2zr-Tj3sWgdRdxFDQTmUa',
+    ['leave'] = 'https://discord.com/api/webhooks/972291018357604392/yaWmEnZQlAaKkvarx3Adw12FmlDzmQnKcUVo0f0Glq_911L2zr-Tj3sWgdRdxFDQTmUa',
+    ['deletedchar.'] = '',
     ['ooc'] = '',
     ['report'] = '',
     ['me'] = '',
@@ -31,13 +33,16 @@ local Webhooks = {
     ['weather'] = '',
     ['moneysafes'] = '',
     ['bennys'] = '',
-    ['bossmenu'] = '',
+    ['bossmenu'] = 'https://discord.com/api/webhooks/980657630328541235/PgeBDnqvmcRcizxc60eqPHj_vkcjaR96G0RscJ7BwyYjbJqfG0jWu8IiYU-On3RyYvk9',
     ['robbery'] = '',
     ['casino'] = '',
     ['traphouse'] = '',
     ['911'] = '',
     ['palert'] = '',
     ['house'] = '',
+    ['twitter'] = 'https://discord.com/api/webhooks/941910013025329182/XhX0-vhBNHvkQmkSG4GBkSMPmYD_qzkwsejUVoIJMP4IfDqXQnTzH_kcZYKHoqSopXwh',
+    ['advert'] = 'https://discord.com/api/webhooks/978840754598338570/rsd1XA4dMAE33I_KB8NdGqsywwuhzp4X8SOy0v-nyHaA2jMqoKNJ2Ofol37aIKqQDWWU',
+    ['discordia'] = 'https://discord.com/api/webhooks/979084407472259103/8cUDZQDxEoiopqQOOtxFW2K_n9uOIjJ-oYlSnKdzY2De3kOZEIr5ie5_tEfP22IrTZ2h',
 }
 
 local Colors = { -- https://www.spycolor.com/
@@ -51,12 +56,63 @@ local Colors = { -- https://www.spycolor.com/
     ['yellow'] = 16776960,
     ['pink'] = 16761035,
     ["lightgreen"] = 65309,
+    ['twitterblue'] = 2061822
 }
 
-RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message, tagEveryone)        
+--Future Use for server status???
+RegisterNetEvent('qb-log:server:CreateServerStatus', function (name, tagEveryone)
+    local tag = tagEveryone or false
+    local webHook = Webhooks[name] or Webhooks['serverstatus']
+    local embedData = {
+        {
+            ['title'] = 'Server Status:',
+            ['color'] = 'green',
+            ['footer'] = {
+                ['text'] = os.date('%c')
+            },
+            ['description'] = 'Great Liberty Is Online',
+            ['author'] = {
+                ['name'] = 'Great Liberty Roleplay',
+                ['icon_url'] = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670',    
+            },
+        }
+    }
+    PerformHttpRequest(webHook, function (err, text, headers) end, 'POST', json.encode({ username = 'Great Liberty Roleplay', embeds = embedData}), {['Content-Type'] = 'application/json'})
+    if tag then
+        PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = 'QB Logs', content = '@everyone'}), { ['Content-Type'] = 'application/json' })
+    end
+end)
+
+RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message, tagEveryone, urls)        
     local tag = tagEveryone or false
     local webHook = Webhooks[name] or Webhooks['default']
-    local embedData = {
+    local url = urls or nil
+        username = 'QB Logs'
+        botname = 'QB Logs'
+        avatar = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670'
+        icon = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670'
+    if name == 'twitter' then
+        username = 'Twitter'
+        botname = ''
+        avatar = 'https://i.pinimg.com/736x/ee/af/9c/eeaf9ce3ab22ecb3904daea1b2eab04a.jpg'
+    elseif name == 'discordia' then
+        username = 'discordia'
+        botname = ''
+        avatar = 'https://i.pinimg.com/originals/0d/8b/43/0d8b437a4c1c788f036590bc4b71ff55.png'
+    elseif name == 'advert' then
+        username = 'Advert'
+        botname = ''
+        avatar = 'https://cdn.icon-icons.com/icons2/1527/PNG/512/newspaper_106688.png'
+    elseif name == 'join' then
+        username = 'Flew In'
+        botname = ''
+        avatar = 'https://www.pngitem.com/pimgs/m/56-568107_right-arrow-icon-green-right-arrow-transparent-background.png'
+    elseif name == 'leave' then
+        username = 'Flew Out'
+        botname = ''
+        avatar = 'https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes-3/3/21-512.png'
+    end
+        local embedData = {
         {
             ['title'] = title,
             ['color'] = Colors[color] or Colors['default'],
@@ -65,15 +121,18 @@ RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message
             },
             ['description'] = message,
             ['author'] = {
-                ['name'] = 'QBCore Logs',
-                ['icon_url'] = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670',
+                ['name'] = botname,
+                ['icon_url'] = icon,
             },
+            ['image'] = {
+                ['url'] = url
+            }
         }
     }
-    PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = 'QB Logs', embeds = embedData}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = username, avatar_url = avatar, embeds = embedData}), { ['Content-Type'] = 'application/json' })
     Citizen.Wait(100)
     if tag then
-        PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = 'QB Logs', content = '@everyone'}), { ['Content-Type'] = 'application/json' })
+        PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = username, content = '@everyone'}), { ['Content-Type'] = 'application/json' })
     end
 end)
 

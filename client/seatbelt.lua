@@ -67,7 +67,8 @@ RegisterNetEvent('seatbelt:client:UseHarness', function(ItemData) -- On Item Use
             end)
         end
     else
-        QBCore.Functions.Notify('You\'re not in a car.', 'error')
+        --QBCore.Functions.Notify('You\'re not in a car.', 'error')
+        exports['okokNotify']:Alert('Not In A Vehicle', 'You\'re not in a car.', 1500, 'error')
     end
 end)
 
@@ -100,7 +101,7 @@ function ResetHandBrake()
     end
 end
 
--- Export
+-- exports
 
 function HasHarness()
     return harnessOn

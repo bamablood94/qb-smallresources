@@ -89,7 +89,8 @@ RegisterNetEvent('fireworks:client:UseFirework', function(itemName, assetName)
         DoFireWork(assetName, pos)
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), "anim@narcotics@trash", "drop_front", 1.0)
-        QBCore.Functions.Notify("Canceled..", "error")
+        --QBCore.Functions.Notify("Canceled..", "error")
+        exports['okokNotify']:Alert('Cencelled', 'You cancelled this action.', 1500, 'error')
     end)
 end)
 

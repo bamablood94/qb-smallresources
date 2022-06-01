@@ -2,7 +2,7 @@ local nightvision = false
 
 RegisterNetEvent("nightvision:UseNightvision", function()
     nightvision = not nightvision
-    qbCore.Functions.Progressbar("remove_gear", "Nightvision..", 250, false, true, {}, {}, {}, {}, function() -- Done
+    QBCore.Functions.Progressbar("remove_gear", "Nightvision..", 250, false, true, {}, {}, {}, {}, function() -- Done
         if nightvision then
             SetNightvision(true)
             TriggerServerEvent("InteractSound_SV:PlayOnSource", "nv", 0.25)

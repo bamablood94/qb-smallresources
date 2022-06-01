@@ -9,7 +9,8 @@ AddEventHandler('oxydelivery:server', function()
 
 		TriggerClientEvent("oxydelivery:startDealing", source)
 	else
-		TriggerClientEvent('QBCore:Notify', source, 'You dont have enough money', 'error')
+		--TriggerClientEvent('QBCore:Notify', source, 'You dont have enough money', 'error')
+		TriggerClientEvent('okokNotify:Alert', source, 'Not Enough Money', 'You don\'t have enough money.', 1500, 'error')
 	end
 end)
 
@@ -32,7 +33,8 @@ AddEventHandler('oxydelivery:receiveoxy', function()
 	if Chance > 96 then
 		Player.Functions.AddItem("weedkey", 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["weedkey"], 'add', 1)
-		TriggerClientEvent('QBCore:Notify', src, "You found a strange key!", "success")
+		--TriggerClientEvent('QBCore:Notify', src, "You found a strange key!", "success")
+		TriggerClientEvent('okokNotify:Alert', src, 'Strange Item', 'You found a strange Key! Wonder what it\'s for?', 2500, 'success')
 	end
 end)
 
