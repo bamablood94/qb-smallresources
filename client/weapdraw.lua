@@ -146,7 +146,7 @@ CreateThread(function()
 		if DoesEntityExist(ped) and not IsEntityDead(ped) and not IsPedInParachuteFreeFall(ped) and not IsPedFalling(ped) and (GetPedParachuteState(ped) == -1 or GetPedParachuteState(ped) == 0) then
 			if currWeapon ~= GetSelectedPedWeapon(ped) then
 				pos = GetEntityCoords(ped, true)
-				rot = GetEntityHeading(ped)
+				local rot = GetEntityHeading(ped)
 
 				local newWeap = GetSelectedPedWeapon(ped)
 				SetCurrentPedWeapon(ped, currWeapon, true)
@@ -155,7 +155,7 @@ CreateThread(function()
 				loadAnimDict("rcmjosh4")
 				loadAnimDict("weapons@pistol@")
 
-				HolsterVariant = GetPedDrawableVariation(ped, 7)
+				local HolsterVariant = GetPedDrawableVariation(ped, 7)
 				if HolsterVariant == 8 then
 					WearingHolster = true
 				elseif HolsterVariant == 1 then

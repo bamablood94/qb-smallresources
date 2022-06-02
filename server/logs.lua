@@ -59,31 +59,7 @@ local Colors = { -- https://www.spycolor.com/
     ['twitterblue'] = 2061822
 }
 
---Future Use for server status???
-RegisterNetEvent('qb-log:server:CreateServerStatus', function (name, tagEveryone)
-    local tag = tagEveryone or false
-    local webHook = Webhooks[name] or Webhooks['serverstatus']
-    local embedData = {
-        {
-            ['title'] = 'Server Status:',
-            ['color'] = 'green',
-            ['footer'] = {
-                ['text'] = os.date('%c')
-            },
-            ['description'] = 'Great Liberty Is Online',
-            ['author'] = {
-                ['name'] = 'Great Liberty Roleplay',
-                ['icon_url'] = 'https://media.discordapp.net/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png?width=670&height=670',    
-            },
-        }
-    }
-    PerformHttpRequest(webHook, function (err, text, headers) end, 'POST', json.encode({ username = 'Great Liberty Roleplay', embeds = embedData}), {['Content-Type'] = 'application/json'})
-    if tag then
-        PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = 'QB Logs', content = '@everyone'}), { ['Content-Type'] = 'application/json' })
-    end
-end)
-
-RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message, tagEveryone, urls)        
+RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message, tagEveryone)
     local tag = tagEveryone or false
     local webHook = Webhooks[name] or Webhooks['default']
     local url = urls or nil
@@ -136,6 +112,6 @@ RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message
     end
 end)
 
-QBCore.Commands.Add('testwebhook', 'Test Your Discord Webhook For Logs (God Only)', {}, false, function(source, args)
+QBCore.Commands.Add('testwebhook', 'Test Your Discord Webhook For Logs (God Only)', {}, false, function()
     TriggerEvent('qb-log:server:CreateLog', 'testwebhook', 'Test Webhook', 'default', 'Webhook setup successfully')
 end, 'god')
